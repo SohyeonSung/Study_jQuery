@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- jQuery 사용방식2 (CDN) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"> </script>
+    <script>
+        // :first, :last, :even, :odd
+        // .first(), .last(), .even(), .odd() 메소드 사용방식  
+        $().ready(function() {
+            // :first 첫번째 요소 찾기
+            $("ul>li").css("color", "red");
+            //$("ul:first").css("border", "3px solid red");
+            $("ul").first().css("border", "3px solid red");
+
+            //$("div:first").css("color", "blue");
+            $("div").first().css("color", "blue");
+
+            // :last 마지막 요소 찾기
+            $("div:last").css("color", "green");
+            $("div").last().css("font-style", "italic");
+
+            // :first-child : 첫번째 자녀 요소 찾기
+            $("li:first").css("border", "2px dotted red");
+            $("li:first-child").css("background-color", "yellow");
+
+            // :last-child : 마지막 자녀 요소 찾기
+            $("li:last").css("border", "2px dotted blue");
+            $("li:last-child").css("background-color", "orange");
+
+            //============================
+            // CSS 다중 설정
+            // 방법1 : 매 번 객체를 찾아서 스타일 적용
+            $("#txt").css("background-color", "yellow");
+            $("#txt").css("border", "3px solid black");
+            
+            // 찾는 행위를 1번만 실행
+            let $txt = $("#txt");
+            $txt.css("background-color", "yellow");
+            $txt.css("border", "3px solid black");
+            $txt.css("font-size", "2rem");
+            
+            // 방법2 : 체이닝 기법 
+            $("#txt").css("background-color", "yellow")
+                .css("border", "3px solid black")
+                .css("font-size", "2rem");      
+            
+            //방법3 : CSS 속성 작성된 객체를 전달
+            $("#txt").css({
+                "background-color" : "yellow",
+                "border" : "3px solid black",
+                "font-size" : "2rem"
+            });
+         //=============================
+         // 선택요소 인덱스 번호 기준
+         // :even - 짝수요소, :odd - 홀수요소
+         // .even(), .odd() 메소드 사용권장
+         $("div:even").css("background-color", "yellow");
+         $("div:odd").css("background-color", "aqua");
+
+         $("div").even().css("width", "500px");
+         $("div").odd().css("width", "300px");
+
+         //$("li:even").css("border", "3px dotted red");
+         //$("li:odd").css("border", "3px dotted blue");
+         $("li").even().css("border", "3px dotted red");
+         $("li").odd().css("border", "3px dotted blue");
+
+         $("li:eq(0)").css("background-color", "yellow");
+         $("li:eq(1)").css("background-color", "orange");
+
+
+
+        });
+
+    </script>
+    <style>
+        div {
+            border: 2px solid gray;
+            margin: 10px 0;
+        }
+
+        ul {
+            border: 5px solid blue;
+            margin: 10px;
+        }
+
+        li {
+            border: 2px solid green;
+            margin: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h2>선택자 first,last,even,odd</h2>
+    <div>
+        <h3>div-h3 영역1</h3>
+    </div>
+    <div>div-영역2</div>
+    <div>div-영역3</div>
+    <div>div-영역4</div>
+    <hr>
+    <span id="txt">span 텍스트 영역</span>
+
+    <ul>
+        <li>Java</li>
+        <li>Servlet JSP</li>
+        <li>Spring</li>
+    </ul>
+    <hr>
+
+    <ul>
+        <li>Java - 2번째</li>
+        <li>Servlet JSP - 2번째</li>
+        <li>Spring - 2번째</li>
+    </ul>
+
+    <div>div 마지막 / body 직전</div>
+
+
+    <br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
+</body>
+
+</html>

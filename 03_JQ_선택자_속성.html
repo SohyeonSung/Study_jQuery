@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> 선택자 - 속성 </title>
+    <!-- jQuery 사용방식2 (CDN) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"> </script>   
+    
+<script>
+    $(document).ready(function(){
+        // a 태그에 href 속성이 있는 요소
+        $("a[href]").css("color", "red");
+        
+        // a 태그중 href 속성값이 naver 일치, naver 아닌것
+        $("a[href='naver']").css("color", "orange");
+        $("a[href!='naver']").css("font-size", "2em"); 
+        
+        // a 태그중 href 속성값이 mail 로 시작(^)
+        $("a[href^='mail']").css("color", "silver"); 
+        // a 태그중 href 속성값이 net 로 끝나는($)
+        $("a[href$='net']").css("color", "blue"); 
+        
+        // a 태그중 href 속성값에 naver 가 있으면
+        $("a[href*='naver']").css("color", "purple"); 
+        
+        // =======================================
+        // AND, OR 조건 형태로 속성값 찾기
+        // AND 조건 형태로 속성값 찾기([][] ; AND 조건)
+        $("[href^='mailto'][href*='naver']").css("background-color", "yellow");
+        
+        // OR 조건 형태로 속성값 찾기([],[] : OR 조건)
+        $("[href^='mailto'], [href*='naver']").css("border", "3px solid green");
+    });
+</script>    
+</head>
+<body>
+    <h2>jQuery 사용 속성을 찾아 스타일 적용</h2>
+    <a href="https://www.naver.com">네이버</a>
+    <a href="https://www.daum.net">다음</a>
+    <a href="https://www.nate.com">네이트</a>
+    
+    <a>구글(href 속성없음)</a>
+    <a href="naver">네이버(href="naver")</a>
+    <hr>
+    
+    <a href="mailto:naver@naver.com">네이버메일</a>
+    <a href="mailto:daum@daum.net">다음메일</a>
+    <a href="mailto:nate@nate.com">네이트메일</a>
+
+</body>
+</html>
+
+
+
+
+
