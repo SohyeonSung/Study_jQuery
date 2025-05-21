@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>contains, eq, find</title>
+    <!-- jQuery 사용방식2 (CDN 방식) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    /* 필터선택자 - 선택자에 콜른(:) 기호를 포함하는 선택자
+    :contains(문자열) - 문자열 포함하고 있는 요소
+    :eq(인덱스) ---> .eq() 메소드 사용
+    :gt(인덱스), :lt(인덱스) ---> .slice(start, end) 사용
+    :eq(인덱스) : 인덱스 번호에 해당하는 요소
+    :gt(인덱스) : 인덱스 번호보다 큰 위치 요소
+    :lt(인덱스) : 인덱스 번호보다 작은 위치 요소
+    .find(선택자) : 하위요소 중 필터링해서 찾기
+    .parent() : 부모요소 선택
+    .siblings() : 형제요소 선택
+    *********************/
+    $(document).ready(function(){
+/*        
+        // :contains(문자열) - 문자열 포함하고 있는 요소
+        //$("td:contains('Java')").css("background-color", "yellow");
+       
+        $("td:contains('Servlet')")
+            .css("border", "3px solid red")
+            .siblings()  //형제요소 선택
+            .css("color", "red")
+            .parent() //부모요소 선택
+            .css("background-color", "aqua");
+       
+        //:eq(인덱스) ---> .eq() 메소드 사용
+        //:gt(인덱스), :lt(인덱스) ---> .slice(start, end) 사용
+        //$("td:eq(2)").css("background-color", "yellow");
+        //$("td:gt(2)").css("background-color", "yellow");
+        //$("td:lt(2)").css("background-color", "yellow");
+        
+        //$("td").eq(2).css("background-color", "yellow");
+        //$("td").slice(3).css("background-color", "orange");
+        //$("td").slice(0, 2).css("background-color", "green");
+        
+        //.find(선택자) : 하위요소 중 필터링해서 찾기
+        //$("tbody").find("td:gt(0)").css("background-color", "yellow");
+        
+        $("td:contains(basic)")
+            .parent()
+            .find("td:gt(0)")
+            .css("background-color", "yellow");
+*/
+        $("thead th").css("background-color", "yellow");
+        $("thead").find("th:eq(0)").css("background-color", "gray");
+        
+    });
+    
+    
+</script>    
+</head>
+<body>
+    <table border>
+        <thead class="c1">
+            <tr>
+                <th>과목</th>
+                <th>상세내용</th>
+                <th>비고</th>
+            </tr>
+        </thead>
+        <tbody class="c1">
+            <tr>
+                <td>JSP</td>
+                <td>Servlet, EL, JSTL</td>
+                <td>2.3</td>
+            </tr>
+            <tr>
+                <td>Java</td>
+                <td>basic</td>
+                <td>1.8</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
+
+
+
+
+

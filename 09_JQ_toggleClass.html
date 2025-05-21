@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>toggleClass</title>
+    <!-- jQuery 사용방식2 (CDN 방식) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    // 토글(toggle) : 특정 상태를 반복하는 것(설정/해제, 보이기/안보이기, on/off, ...)
+    // toggle() : 특정상태 설정, 해제
+    // toggleClass() : 클래스명 토글처리(설정/해제, 추가/삭제)
+    //--------------------
+    $(function(){
+        // toggle() : 특정상태 설정, 해제
+        $("#btn-toggle").click(function(){
+            //$("#myDiv").toggle(); //순간 없어지고(display:none), 생김
+            //$("#myDiv").toggle("fast"); //빠르게
+            //$("#myDiv").toggle("slow"); //느리게
+            $("#myDiv").toggle(3000); //밀리초동안
+            //$("#myDiv").toggle(3000, function(){
+            //    console.log("display : " + $(this).css("display"));
+            //});
+        });
+        
+        //addClass(), removeClass() ---> toggleClass()
+        $("#btn-addClass").click(function(){
+            $("#myDiv").addClass("hidden");
+        });
+        $("#btn-removeClass").click(function(){
+            $("#myDiv").removeClass("hidden");
+        });
+        
+        // toggleClass() : 클래스명 추가/삭제 반복
+        $("#btn-toggleClass").click(function(){
+            $("#myDiv").toggleClass("hidden");
+        });
+        
+    });
+</script>
+<style>
+    #myDiv { border: 2px solid black; }
+    img { border: 1px solid red; }
+    .hidden { display: none; }
+</style>    
+</head>
+<body>
+    <h2>버튼 클릭시마다 div 태그 숨기기/보이기 토글(toggle)</h2>
+    <button id="btn-toggle">토글(toggle)</button>
+    <button id="btn-addClass">추가(addClass)</button>
+    <button id="btn-removeClass">삭제(removeClass)</button>
+    <button id="btn-toggleClass">삭제(toggleClass)</button>
+    <hr>
+    <div id="myDiv">
+        <img src="images/car1.jpg" alt="자동차 사진">
+    </div>
+    <hr>
+    
+</body>
+</html>
+
+
+
+
+

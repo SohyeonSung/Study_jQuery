@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>filter, end</title>
+    <!-- jQuery 사용방식2 (CDN) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"> </script>   
+<script>
+    // filter(선택자) : 선택자 매칭되는 jQuery 객체
+    // end() : 필터링 취소하고 직전(이전) 상태로 되돌아감
+    //---------------------
+    //$(document).ready(function(){});
+    //$().ready(function(){});
+    //$(function(){});
+    //--------------
+    $().ready(function(){   
+/*        
+        $("img").css("border", "1px solid blue");
+        $("img").filter("[title *= 'JSP']").css("border-width", "5px");
+        $("img").filter("[title ^= 'Sp']").css("border-width", "10px");
+        $("img").filter("[title $= 'a']").css("border-width", "15px");
+*/        
+/*        
+        $("img").addClass("red-border");
+        $("img").filter("[title *= 'JSP']").addClass("bd-width5");
+        $("img").filter("[title ^= 'Ja']").addClass("bd-width10");
+        $("img").filter("[title $= 'ing']").addClass("bd-width15");
+        
+        $("img").filter("[title $= 'ing']").removeClass("bd-width15");
+*/
+        //체이닝 방식으로 작성
+        $("img").addClass("red-border")
+            .filter("[title *= 'JSP']").addClass("bd-width5")
+            .end() // 필터링 끝(이전 상태로 되돌리기)
+            .filter("[title ^= 'Ja']").addClass("bd-width10")
+            .end()
+            .filter("[title $= 'ing']").addClass("bd-width15");
+    });
+    
+</script>  
+<style>
+    .red-border { border: 2px solid red; }
+    .bd-width5 { border-width: 5px; }
+    .bd-width10 { border-width: 10px; }
+    .bd-width15 { border-width: 15px; }
+</style>
+</head>
+<body>
+    <img src="#" title="JSP Studty" alt="JSP">
+    <img src="#" title="Java" alt="Java">
+    <img src="#" title="Spring" alt="Spring">
+
+</body>
+</html>
+
+
+
+
+

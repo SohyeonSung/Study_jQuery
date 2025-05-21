@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트 연결</title>
+    <!-- jQuery 사용방식2 (CDN) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"> </script>   
+<script>
+    /* 이벤트 연결 : on(), off(), one() 메소드
+    .on(이벤트명, 콜백함수) : 이벤트 연결
+    .off(이벤트명) : 이벤트 연결 해제
+    .one(이벤트명, 콜백함수) : 이벤트 한 번만 실행처리
+    // .hover(in, out) : 마우스 이벤트 사용
+    //bind, unbind : deprecated 됨
+    ***********************/
+    $(document).ready(function(){
+        //$("#btn-one").css("background-color", "yellow");
+        
+        // one(이벤트명, 콜백함수) : 이벤트 한 번만 실행처리
+        $("#btn-one").one("click", function(){
+            alert("한 번의 클릭이벤트만 처리~~~");
+        });
+        
+        let count = 1;
+        /*
+        //단축 이벤트 연결 방식
+        $("#divChild").click(function(){
+            console.log("click 메소드 - 클릭이벤트처리 " + count++);
+        });
+        */
+        
+        // .on(이벤트명, 콜백함수) : 이벤트 연결
+        $("#divChild").on("click", function(){
+            console.log("on 메소드 click - 클릭이벤트처리 " + count++);
+        });
+        
+        // 더블클릭 이벤트 연결
+        $("#divChild").dblclick(function(){
+            console.log("dblclick 메소드 - 더블클릭이벤트처리 " + count++);
+        });
+        
+        // .off(이벤트명) : 이벤트 연결 해제
+        $("#divChild").off("dblclick");
+        
+        //========================
+/*        
+        // mouseover, mouseout : 해당영역에 마우스가 위에 있거나 빠져나갈때 발생
+        $("#divParent").on("mouseover", function(){
+            console.log(">>#divParent mouseover 이벤트발생 " + count++);
+        });
+        $("#divParent").on("mouseout", function(){
+            console.log(">>#divParent mouseout 이벤트발생 " + count++);
+        });
+        
+        $("#divChild").on("mouseover", function(){
+            console.log(">>>>#divChild mouseover 이벤트발생 " + count++);
+        });
+        $("#divChild").on("mouseout", function(){
+            console.log(">>>>#divChild mouseout 이벤트발생 " + count++);
+        });
+*/   
+        // mouseenter, mouseleave : 해당영역에 마우스가 위에 있거나 빠져나갈때 발생
+        $("#divParent").on("mouseenter", function(){
+            console.log(">>#divParent mouseenter 이벤트발생 " + count++);
+        });
+        $("#divParent").on("mouseleave", function(){
+            console.log(">>#divParent mouseleave 이벤트발생 " + count++);
+        });
+        
+        $("#divChild").on("mouseenter", function(){
+            console.log(">>>>#divChild mouseenter 이벤트발생 " + count++);
+            $(this).css("background-color", "yellow");
+        });
+        $("#divChild").on("mouseleave", function(){
+            console.log(">>>>#divChild mouseleave 이벤트발생 " + count++);
+            $(this).css("background-color", "gray");
+        });   
+/*        
+        //자동차 이미지 위에 마우스가 올라올때, 벗어날때 이벤트 처리
+        $("#img1").mouseenter(function(){
+            //$("#img1").attr("src", "images/car2.jpg");
+            //$("#img1").prop("src", "images/car2.jpg");
+            $(this).prop("src", "images/car2.jpg");
+            console.log("img src 속성값 prop : " + $("#img1").prop("src"));
+            console.log("img src 속성값 attr : " + $("#img1").attr("src"));
+        });
+        
+        $("#img1").mouseleave(function(){
+            //$("#img1").attr("src", "images/car1.jpg");
+            //$("#img1").prop("src", "images/car1.jpg");
+            $(this).prop("src", "images/car1.jpg");
+            console.log("img src 속성값 prop : " + $("#img1").prop("src"));
+            console.log("img src 속성값 attr : " + $("#img1").attr("src"));
+        });
+*/  
+/*        
+        // on() : 여러 개 이벤트 한 번에 설정 가능
+        $("#img1").on({
+            click : function(){
+                console.log("img click~~~~");
+            },
+            mouseenter : function(){
+                //$("#img1").prop("src", "images/car2.jpg")
+                $(this).prop("src", "images/car2.jpg")
+            },
+            mouseleave : function(){
+                //$("#img1").prop("src", "images/car1.jpg")
+                $(this).prop("src", "images/car1.jpg")
+            }
+        });
+*/        
+        // hover() : 마우스 이벤트 사용
+        // $(선택자).hover(in, out)
+        $("#img1").hover(
+            function(){
+                //$("#img1").prop("src", "images/car2.jpg")
+                $(this).prop("src", "images/car2.jpg")
+            },
+            function(){
+                //$("#img1").prop("src", "images/car1.jpg")
+                $(this).prop("src", "images/car1.jpg")
+            }
+        );
+        
+    });
+</script>  
+<style>
+    div { border: 2px solid gray; margin: 10px; padding: 20px; }
+    #divParent { border: 3px solid orange; width: 500px; height: 100px; }
+    #divImg { border: 3px solid red; width: 500px; height: 200px; }
+    #img1 { width: 400px; border: 2px solid gray; }
+</style>    
+</head>
+<body>
+    <div id="btn-one">한 번만 실행(1회만)</div>
+    <div id="divParent">
+        <div id="divChild">안녕~~</div>
+    </div>
+    <div id="divImg">
+        <img src="images/car1.jpg" alt="자동차" id="img1">
+    </div>
+
+</body>
+</html>
+
+
+
+
+

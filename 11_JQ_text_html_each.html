@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>text(), html(), each()</title>
+    <!-- jQuery 사용방식2 (CDN 방식) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    // .text() : DOM 객체의 textContent 속성값을 읽고, 쓰기
+    // .html() : DOM 객체의 innerHTML 속성값을 읽고, 쓰기
+    // $(선택자).each(function(index, element){}) : 선택요소에 대한 데이터 처리
+    // $.each(array, function(index, value){}); //배열 데이터 처리
+    // $.each(object, function(prop, value){}); //객체 데이터 처리
+    //-------------------------
+    $(function(){
+        $("p").each(function(idx, element){
+            console.log("idx: " + idx + ", element: " + element);
+            console.log("this === element : " + (this === element));
+            console.log("idx: " + idx + ", $(this).text() : " + $(this).text());
+            console.log("idx: " + idx + ", $(this).html() : " + $(this).html());
+        });
+        console.log("-----------");
+        
+        let $ptags = $("p");
+        console.log($ptags);
+        for (let ptag of $ptags) {
+            console.log(ptag);
+            //console.log(ptag.textContent);
+            //console.log($(ptag).text()); //단순 text 읽기
+            console.log(ptag.innerHTML);
+            console.log($(ptag).html()); //HTML 태그 읽기
+        }
+        //------------------
+        for (let i = 0; i < $ptags.length; i++) {
+            $($ptags[i]).prop("id", "para-" + i);
+        }
+        $("#para-0").css("background-color", "yellow");
+        
+        //======================
+        $("#btn1").click(function(){
+            let text = $("#para-0").text();
+            console.log("id가 para-0 인 태그 text() : " + text);
+            
+            let html = $("#para-0").html();
+            console.log("id가 para-0 인 태그 html() : " + html);
+        });
+        
+        //text(데이터), html(데이터) 쓰기
+        $("#btn2").click(function(){
+            $("#para-1").text("text(): 안녕하세요");
+            $("#para-2").html("html(): 안녕하세요");
+            
+            $("#para-3").text("<b>text(): 안녕하세요</b>");
+            $("#para-4").html("<b>html(): 안녕하세요</b>");
+        });
+    });
+    
+</script>    
+</head>
+<body>
+    <h2>text(), html() 메소드 알아보기</h2>
+    <p><strong>첫번째</strong> p태그</p>
+    <p>두번째 p태그</p>
+    <p>세번째 p태그</p>
+    <p>네번째 p태그</p>
+    <p>다섯번째 p태그</p>
+    <button id="btn1">text(), html() 읽기</button>
+    <button id="btn2">text(데이터), html(데이터) 쓰기</button>
+
+</body>
+</html>
+
+
+
+
+

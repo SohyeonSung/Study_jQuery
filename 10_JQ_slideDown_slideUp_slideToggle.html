@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- jQuery 사용방식2 (CDN) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"> </script>   
+<script>
+    // slideDown() : 아래쪽으로 나타나기
+    // slideUp() : 위쪽으로 사라지기
+    // slideToggle() : 아래쪽으로 나타나기/위쪽으로 사라지기 반복
+    //------------------
+    $(document).ready(function(){
+        $("p:eq(0)").click(function(){
+            //alert("첫번째 p태그 클릭~~");
+            //$("img").slideToggle(2000);
+            $("#myDiv").slideToggle(2000);
+        });
+        
+        //--------------
+        //두번째 p태그 click 되면
+        //세번째 p태그 나타난 후, 두번째 p태그 사라지고 
+        $("#p2").click(function(){
+            $("#p2").css("background-color", "yellow");
+            //p3 보여진 후, p2 사라지기
+            $("#p3").slideDown(2000, function(){
+                $("#p2").slideUp(2000)
+            });
+        });
+        
+        //세번째 p태그 click 되면
+        //세번째 p태그 사라진 후, 두번째 p태그 나타나기
+        $("#p3").click(function(){
+            $("#p3").css("background-color", "green");
+            
+            //p3 사라진 후 p2 나타나기
+            $("#p3").slideUp(2000, function(){
+                $("#p2").slideDown(2000);
+            });
+        });
+
+    });
+    
+</script> 
+<style>
+    p { border: 2px solid green; }
+    #p2, #p3 { height: 50px; }
+    #p2 { border-color: blue; }
+    #p3 { border-color: red; display: none}
+    #myDiv { border: 2px solid orange; }
+</style>    
+</head>
+<body>
+    <p>첫번째 : 자동차 보이기(slideDown), 자동차 숨기기(slideUp)</p>
+    <hr>
+    <p id="p2">두번째 p태그(#p2)</p>
+    <p id="p3">세번째 p태그(#p3)</p>
+    <p>네번째 p태그</p>
+    <hr>
+    
+    <div id="myDiv">
+        <img src="images/car1.jpg" alt="자동차 사진">
+    </div>
+    <hr>
+   
+    
+
+</body>
+</html>
+
+
+
+
+
+
