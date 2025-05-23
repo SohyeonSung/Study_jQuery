@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>보이기, 안보이기</title>
+    <!-- jQuery 사용방식2 (CDN 방식) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        let obj = $("#myDiv");
+        //let obj = $("#car");
+        $("#fadeOut").on("click", function(){
+            $(obj).fadeOut(2000);
+        });
+        
+        $("#fadeIn").on("click", function(){
+            $(obj).fadeIn(2000);
+        });
+        
+        $("#fadeToggle").on("click", function(){
+            $(obj).fadeToggle(2000);
+        });
+        
+        // fadeTo
+        $(".fadeTo").first().on("click", function(){
+            $(obj).fadeTo(2000, 0);
+        });
+        
+        $(".fadeTo").eq(1).on("click", function(){
+            $(obj).fadeTo(2000, 0.2);
+        });
+        
+        $(".fadeTo").eq(2).on("click", function(){
+            $(obj).fadeTo(2000, 0.6);
+        });
+        
+        $(".fadeTo").last().on("click", function(){
+            $(obj).fadeTo(2000, 1);
+        });
+        
+        // hide, show, toggle
+        $("#hide").on("click", function(){
+            $(obj).hide("fast");
+        });
+        $("#show").on("click", function(){
+            $(obj).show("slow");
+        });
+        $("#toggle").on("click", function(){
+            $(obj).toggle(2000);
+        });
+        
+        // slideUp, slideDown, slideToggle
+        $("#slideUp").on("click", function(){
+            $(obj).slideUp("fast");
+        });
+        $("#slideDown").on("click", function(){
+            $(obj).slideDown("slow");
+        });
+        $("#slideToggle").on("click", function(){
+            $(obj).slideToggle(2000);
+        });
+    });
+</script>  
+<style>
+    #myDiv { border: 3px solid blue; }
+</style>    
+</head>
+<body>
+    <button id="fadeOut">희미하게 사라지기(fadeOut)</button>
+    <button id="fadeIn">선명하게 나타나기(fadeIn)</button>
+    <button id="fadeToggle">fadeToggle(2000)</button>
+    <hr>
+    <button class="fadeTo">fadeTo(2000, 0)</button>
+    <button class="fadeTo">fadeTo(2000, 0.2)</button>
+    <button class="fadeTo">fadeTo(2000, 0.6)</button>
+    <button class="fadeTo">fadeTo(2000, 1)</button>
+    <hr>
+    <button id="hide">안보이기(hide)</button>
+    <button id="show">보이기(show)</button>
+    <button id="toggle">toggle(2000)</button>
+    <hr>
+    <button id="slideUp">위로 사라지기(slideUp)</button>
+    <button id="slideDown">아래로 나타타기(slideDown)</button>
+    <button id="slideToggle">slideToggle(2000)</button>
+    <hr>
+    <div id="myDiv">
+        <img src="images/car1.jpg" alt="자동차사진" id="car">
+    </div>
+    <hr>
+
+</body>
+</html>
+
+
+
+
+

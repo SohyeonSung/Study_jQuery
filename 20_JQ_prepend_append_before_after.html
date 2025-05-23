@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- jQuery 사용방식2 (CDN 방식) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    // prepend(), append() : 자녀태그로 맨앞에, 맨뒤에 추가
+    // before(), after() : 형제요소(동일레벨)로 앞에, 뒤에
+    $(function(){
+        // prepend() : 자녀태그로 맨앞에
+        $("#myDiv").prepend("<p>(앞1)반갑습니다(prepend)</p>");
+        $("#myDiv").prepend("<p>(앞2)반갑습니다(prepend)</p>");
+        
+        // append() : 자녀태그로 맨뒤에 추가
+        $("#myDiv").append("<p>(뒤1)반갑습니다(append)</p>");
+        $("#myDiv").append("<p>(뒤2)반갑습니다(append)</p>");
+        
+        //---------------------
+        // before(), after() : 형제요소(동일레벨)로 앞에, 뒤에
+         $("#myDiv").before("<p>1 반갑습니다(before)</p>");
+         $("#myDiv").before("<p>2 반갑습니다(before)</p>");
+        
+        $("#myDiv").after("<p>1 반갑습니다(after)</p>");
+        $("#myDiv").after("<p>2 반갑습니다(after)</p>");
+        
+        //------------------
+        $("h2").before("<h1>개발자 과정</h1>");
+        $("h2").after("<p>(웹프로그래머 양성 과정)</p>");
+        
+        //===================
+        // wrap() : 바깥쪽에서 감싸는 태그 추가(부모요소 추가)
+        $("h2").wrap("<div>");
+        
+        //===================
+        $("a").wrap("<li class='menu-list'>"); //a태그를 li 태그로 감싸기
+        $(".menu-list:first").before("<ul id='menu'>"); //첫번째 li 앞에 ul 추가
+        $("#menu").html( $(".menu-list") ); //ul 에 li 태그 넣기
+       
+    });
+    
+</script> 
+<style>
+    h2 { border: 2px solid orange; }
+    #myDiv { border: 3px solid blue; padding: 10px; }
+    .default { background-color: orange; border: 1px solid black; }
+    /* 동적으로 a태그를 li 만들고, ul 에 넣었을 때 적용 스타일 */
+    ul { border: 3px solid red; }
+    li { border: 1px solid black; margin: 10px; }
+    #menu { background-color: gray; }
+    .menu-list { background-color: orange; }
+</style>    
+</head>
+<body>
+    <h2>Java Web 프로그램 관련</h2>
+    <a href="#">Java</a>
+    <a href="#">JavaScript</a>
+    <a href="#">JSP</a>
+    <a href="#">Spring</a>
+    
+    <hr>
+    <p class="myClass">1장 ~~~~~~</p>
+    <div>내용.....</div>
+    
+    <p class="myClass">2장 ~~~~~~</p>
+    <div>내용.....</div>
+    
+    <p class="myClass">3장 ~~~~~~</p>
+    <div>내용.....</div>
+    
+    <hr>
+    <div id="myDiv">
+        <p class="default">안녕하세요</p>
+        <p class="default">반갑습니다</p>
+        <p class="default">또 만나요</p>
+    </div>
+
+    <br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

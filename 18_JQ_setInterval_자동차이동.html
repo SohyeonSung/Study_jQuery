@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>자동차이동</title>
+    <!-- jQuery 사용방식2 (CDN 방식) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    //(실습) 자동차 이미지를 타이머를 이용해서 우측으로 이동
+    // - 위치이동 : 일정시간마다 좌측여백을 증가시키기
+    $(document).ready(function(){
+        let timer = "없음";
+        
+        $("#moveCar").on("click", function(){
+            console.log(">> 자동차이동 click");
+            if (timer != "없음") return;
+            
+            let marginLeft = 0;
+            timer = setInterval(function(){
+                marginLeft += 100;
+                $("#car").css("margin-left", marginLeft);
+            }, 1000);
+        });
+        
+        //$("#car").on("click", function(){ //click : mousedown + mouseup
+        $("#car").on("mousedown", function(){//마우스가 눌리면
+            console.log(">> 자동차 click - 멈춤");
+            clearInterval(timer);
+            timer = "없음";
+        });
+        
+        $("#reset").on("click", function(){
+            clearInterval(timer);
+            timer = "없음";
+            $("#car").css("margin-left", 0); //자동차 원위치(처음위치로)
+        });
+    });
+</script>
+<style>
+    /* #car { margin-left: 90px} */
+</style>
+</head>
+<body>
+    <button id="moveCar">자동차이동(앞으로-우측으로)</button>
+    <button id="reset">다시하기(처음위치로 이동)</button>
+    <p>자동차를 클릭하면 멈춤</p>
+    <hr>
+    <img src="images/car.jpg" width="150" alt="자동차" id="car">
+
+<script>
+    //$("#car").css("margin-left", "100px");
+    //console.log("margin-left : " + $("#car").css("margin-left"));
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
