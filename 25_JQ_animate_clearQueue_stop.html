@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>animate, clearQueue, stop</title>
+    <!-- jQuery 사용방식2 (CDN 방식) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // 우측으로 이동 후 되돌아오기
+        $("#run").on("click", function(){
+            console.log("> run click~~");
+            $("h1").animate({ "margin-left": "300px" }, 3000)
+                .animate({ "margin-left": "0px" }, 3000);
+        });
+        // stop 처리 - 현재 진행중인 동작 취소(중단)
+        $("#stop").on("click", function(){
+            $("h1").stop();
+        });
+        
+        // 예정된 작업만 취소 : 큐(Queue) 저장 데이터 삭제
+        $("#clearQueue").on("click", function(){
+            $("h1").clearQueue();
+        });
+        
+        // stop(true) : 현재 동작 중단(취소) + 예정작업(큐) 삭제
+        $("#stop-true").on("click", function(){
+            $("h1").stop(true); //true : 큐내용 삭제
+        });
+    });
+</script> 
+<style>
+    h1 { margin-left: 0px;}
+</style>    
+</head>
+<body>
+    <button id="run">run</button>
+    <button id="stop">stop</button>
+    <button id="clearQueue">clearQueue</button>
+    <button id="stop-true">stop(true)</button>
+    <hr>
+    <h1>jQuery</h1>
+
+</body>
+</html>
+
+
+
+
+

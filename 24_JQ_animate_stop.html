@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>animate, stop</title>
+    <!-- jQuery 사용방식2 (CDN 방식) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    // .animate({속성값}, 밀리초, 콜백함수)
+    $(document).ready(function(){
+        $("#go").on("click", function(){
+            console.log("> go click~~");
+            //$("#myDiv").animate({ left: 200, top: 200 }, 2000);
+            $("#myDiv").animate({ left: "+=200", top: "+=200" }, 2000);
+        });
+        
+        $("#stop").on("click", function(){
+            console.log("> stop click~~");
+            $("#myDiv").stop(); //현재 진행중인 동작을 취소(멈춤)
+        });
+        
+        $("#back").on("click", function(){
+            console.log("> back click~~");
+            $("#myDiv").animate({ left: "-=200", top: "-=200" }, 2000);
+        });
+    });
+</script> 
+<style>
+    #myDiv { position: absolute; }
+    /* #myDiv { left: 200px; top: 200px; } */
+</style>
+</head>
+<body>
+    <button id="go">이동</button>
+    <button id="stop">정지</button>
+    <button id="back">되돌아오기</button>
+    
+    <hr>
+    <div id="myDiv">
+        <img src="images/image1.gif">
+    </div>
+
+</body>
+</html>
+
+
+
+
+
