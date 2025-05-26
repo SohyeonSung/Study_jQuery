@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>empty, remove</title>
+    <!-- jQuery 사용방식2 (CDN 방식) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    // $(선택자).empty() : 기준(선택)요소의 자녀태그(내용) 모두 삭제
+    // $(선택자).remove() : 선택요소 모두 삭제
+    // $(선택자).remove([삭제대상]) : 선택요소 중 삭제대상만 삭제
+    $().ready(function(){
+        //empty() : 기준(선택)요소의 자녀태그(내용) 모두 삭제
+        $("#empty").on("click", () => {
+            $("#myDiv").empty();
+        });
+        
+        //remove() : 선택요소 모두 삭제
+        $("#remove").on("click", () => {
+            $("#myDiv").remove();
+        });
+        
+        //$(선택).remove(삭제대상) : 선택요소 중 삭제대상만 삭제(필터링)
+        $("#removeSelect").on("click", () => {
+            // #myDiv 내부 .remove 삭제
+            //$("#myDiv .remove").remove(); 
+            
+            //#myDiv 내부 p태그중 .remove 삭제
+            //$("#myDiv p.remove").remove(); // 선택요소 삭제(직관적)
+            $("#myDiv p").remove(".remove"); // 선택 후 다시 찾아서 삭제(필터링)
+            
+        });
+    });
+</script>
+<style>
+    #myDiv { border: 3px solid blue;  padding: 10px; }
+    p { background-color: orange; }
+    h2 { border: 1px solid black; }
+    div.remove { border: 2px solid green; padding: 10px; }
+</style>    
+</head>
+<body>
+    <button id="empty">초기화-empty()</button>
+    <button id="remove">삭제-remove()</button>
+    <button id="removeSelect">선택해서 삭제-remove(선택요소)</button>
+    <hr>
+    <div id="myDiv">
+        myDiv 영역
+        <p>Java</p>
+        <p class="remove">HTML(class="remove")</p>
+        <p class="remove">CSS(class="remove")</p>
+        <div class="remove">
+            <h2>div-h2 태그</h2>
+            <p class="remove">JavaScript(class="remove")</p>
+            <p>jQuery</p>
+        </div>
+    </div>
+    <hr>
+    <h2>div 다음에 있는 h2태그</h2>
+    <p class="remove">p태그(class="remove")</p>
+
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>이미지전환</title>
+    <!-- jQuery 사용방식2 (CDN 방식) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style>
+    div {
+        width: 320px;
+        margin: 0 auto;
+        position: relative;
+    }
+    div > a {
+        position: absolute;
+        top: 150px;
+        /* 모양(형태), 색상 */
+        width: 50px; height: 50px;
+        background-color: yellow;
+        border-radius: 25%;
+        /* 텍스트 설정 */
+        text-decoration: none;
+        text-align: center;
+        line-height: 50px;
+    }
+    #prev { left: 20px; }
+    #next { right: 20px; }
+</style>    
+<script>
+    //(실습) prev, next 버튼이 클릭되었을 때 처리
+    // 이미지 파일명을 배열에 저장
+    //-----------------
+    //let imgNames = ["bimg01.jpg", "bimg01.jpg", "bimg03.jpg", "bimg04.jpg", "bimg05.jpg",
+    //               "bimg06.jpg", "bimg07.jpg", "bimg08.jpg", "bimg09.jpg", "bimg10.jpg"];
+    //-----------------
+    //(참고) 배열데이터 자동 생성 : for
+    let imgNames = new Array(10);
+    console.log("imgNames : " + imgNames);
+    console.log("imgNames.length : " + imgNames.length);
+
+    for (let i = 0; i < 10; i++) {
+        imgNames[i] = "bimg" + String(i+1).padStart(2, "0") + ".jpg";
+        //imgNames.push("bimg" + String(i+1).padStart(2, "0") + ".jpg");
+    }
+    console.log("imgNames : " + imgNames.join(", "));
+    console.log("imgNames.length : " + imgNames.length);
+    
+    //-------------------
+    //(참고) 배열데이터 자동 생성 - while
+    //imgNames = [];
+    imgNames.length = 0;
+    console.log("imgNames.length : " + imgNames.length);
+    while (imgNames.length < 10) {
+        imgNames.push("bimg" + String(imgNames.length + 1).padStart(2, "0") + ".jpg");
+    }
+    console.log("imgNames : " + imgNames.join(", "));
+    console.log("imgNames.length : " + imgNames.length);
+    
+    $(document).ready(function(){
+        let index = 0;
+        $("#next").on("click", () => {
+            index++;
+            if (index >= imgNames.length) index = 0; //배열 첫번째 데이터 사용
+            console.log("index: " + index + ", 배열값: " + imgNames[index]);
+            $("img").prop("src", "images/" + imgNames[index]);
+        });
+        
+        $("#prev").on("click", () => {
+            index--;
+            if (index < 0) {
+                index = imgNames.length - 1; //배열의 마지막 데이터 사용
+            }
+            console.log("index: " + index + ", 배열값: " + imgNames[index]);
+            $("img").prop("src", "images/" + imgNames[index]);
+        });
+    });
+</script>    
+</head>
+<body>
+    <div>
+        <img src="images/bimg01.jpg" alt="상품이미지">
+        <a href="#" id="prev">prev</a>
+        <a href="#" id="next">next</a>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
